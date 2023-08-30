@@ -1,0 +1,4 @@
+# non-root
+sudo groupadd docker
+sudo adduser dev
+sudo usermod -aG docker dev
