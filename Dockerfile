@@ -4,8 +4,9 @@ RUN python3 -m venv /opt/venv
 
 # Install dependencies:
 COPY requirements.txt .
-
-USER dev
+    
+RUN useradd -u 1001 testuser
+USER testuser
 
 RUN . /opt/venv/bin/activate && pip install -r requirements.txt
 

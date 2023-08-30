@@ -2,3 +2,5 @@
 sudo groupadd docker
 sudo adduser dev
 sudo usermod -aG docker dev
+
+sudo passwd -d dev # delete password
