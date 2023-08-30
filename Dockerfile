@@ -4,12 +4,11 @@ RUN python3 -m venv /opt/venv
 
 # Install dependencies:
 COPY requirements.txt .
-    
+
 RUN useradd -u 1001 testuser
-USER testuser
 
 RUN . /opt/venv/bin/activate && pip install -r requirements.txt
-
+USER testuser
 
 # Run the application:
 COPY main.py .
