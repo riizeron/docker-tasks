@@ -1,18 +1,11 @@
-# Don't forget about "$ xhost +" before running container
-FROM continuumio/miniconda3
+FROM python:3.9-slim-bullseye
 
-# Create the environment:
-COPY environment.yml .
+RUN python3 -m venv /opt/venv
+
+# Install dependencies:
 COPY requirements.txt .
+RUN . /opt/venv/bin/activate && pip install -r requirements.txt
 
-RUN conda env create -f environment.yml
-
-# Activate the environment, and make sure it's activated:
-USER john
-
-RUN conda activate myenv
-
-# The code to run when container is started:
-COPY run.py .
-ENTRYPOINT ["python", "main.py"]
-
+# Run the application:
+COPY main.py .
+CMD . /opt/venv/bin/activate && exec python main.py
