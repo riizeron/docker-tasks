@@ -1,0 +1,13 @@
+# Creating non-root user
+sudo groupadd docker
+sudo adduser dev
+sudo usermod -aG docker dev
+
+sudo passwd -d dev # delete password
+
+# Launching
+
+docker build -t nonrootimage .
+
+# Saving 
+docker save nonrootimage > pythonImage.tar       
