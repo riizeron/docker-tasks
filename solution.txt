@@ -8,6 +8,7 @@ sudo passwd -d dev # delete password
 # Launching
 
 docker build -t nonrootimage .
+docker run -d --name mycontainer -p 52026:52026 myimage 
 
 # Saving 
 docker save nonrootimage > pythonImage.tar       
